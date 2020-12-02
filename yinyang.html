@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用 CSS 画一个八卦</title>
+    <style>
+        @keyframes spin {
+            0% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(0);
+            }
+        }
+
+        @keyframes big {
+            0% {
+                transform-origin: 0% 50%;
+                transform: scale(1.7);
+            }
+
+            100% {
+                transform-origin: 0% 50%;
+                transform: scale(0.3);
+            }
+        }
+
+        @keyframes small {
+            0% {
+                transform-origin: 100% 50%;
+                transform: scale(0.3);
+            }
+
+            100% {
+                transform-origin: 100% 50%;
+                transform: scale(1.7);
+            }
+        }
+
+        body {
+            background-color: #ddd;
+        }
+
+        div {
+            position: relative;
+            height: 400px;
+            width: 400px;
+            margin: 40px auto;
+            /* border: 1px solid red; */
+            border-radius: 200px;
+            background: linear-gradient(black 50%, white 0);
+            animation: spin 2s linear infinite;
+            animation-play-state: paused;
+        }
+
+        div::before,
+        div::after {
+            box-sizing: border-box;
+            position: absolute;
+            top: 25%;
+            content: "";
+            width: 200px;
+            height: 200px;
+            border-width: 67px;
+            background-color: white;
+            border: calc(200px/3) solid black;
+            border-radius: 100px;
+            display: inline-block;
+            animation: big ease-in-out 2s alternate infinite;
+            animation-play-state: paused;
+        }
+
+        div::after {
+            left: 50%;
+            background-color: black;
+            border-color: white;
+            animation: small ease-in-out alternate 2s infinite;
+            animation-play-state: paused;
+        }
+
+        div:hover,
+        div:hover::before,
+        div:hover::after {
+            animation-play-state: running;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+    </div>
+</body>
+
+</html>
