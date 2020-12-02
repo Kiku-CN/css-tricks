@@ -52,6 +52,7 @@
             /* border: 1px solid red; */
             border-radius: 200px;
             background: linear-gradient(black 50%, white 0);
+            /*利用渐变填充背景上黑下白 */
             animation: spin 2s linear infinite;
             animation-play-state: paused;
         }
@@ -59,6 +60,7 @@
         div::before,
         div::after {
             box-sizing: border-box;
+            /*更改盒模型，防止撑大*/
             position: absolute;
             top: 25%;
             content: "";
@@ -67,6 +69,7 @@
             border-width: 67px;
             background-color: white;
             border: calc(200px/3) solid black;
+            /*巧妙利用外边框画同心圆*/
             border-radius: 100px;
             display: inline-block;
             animation: big ease-in-out 2s alternate infinite;
